@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[8]:
 
 
 from sklearn.linear_model import LinearRegression
@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[2]:
+# In[9]:
 
 
 # 채무 gap 평균 증가량을 (21개 기준)으로 평균 값을 낸 뒤
@@ -21,16 +21,16 @@ import matplotlib.pyplot as plt
 # 그런 다음 linear regression을 이용하여 그래프 등을 그린다!
 
 
-# In[55]:
+# In[10]:
 
 
-df = pd.read_csv("final_final.csv")
+df = pd.read_csv("data.csv")
 df.dropna()
 
 df.head()
 
 
-# In[56]:
+# In[11]:
 
 
 from sklearn.model_selection import train_test_split
@@ -38,21 +38,21 @@ from sklearn.model_selection import train_test_split
 #train data X = (현재까지 평균 gdp, 현재까지 평균 채무, 현재 gdp, 현재 채무)
 #train data Y = (다음 년도 gdp, 다음 년도 채무)
 
-x = df[['수출건수','수출금액', '수입건수', '수입금액','무역수지', '인구']]
-y = df[['채무율']]
+x = df[['가구원수','가구주연령', '소득분위']]
+y = df[['소득']]
 
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, test_size=0.3)
 
 
-# In[57]:
+# In[12]:
 
 
 lr = LinearRegression()
 lr.fit(x_train, y_train)
 
 
-# In[58]:
+# In[13]:
 
 
 y_predict = lr.predict(x_test)
@@ -75,22 +75,39 @@ y_predict = lr.predict(x_test)
 # print(y_rate)
 
 
+# In[14]:
+
+
+import matplotlib.pyplot as plt
+
+# plt.scatter(y_year, y_rate, alpha=0.4)
+plt.scatter(y_test, y_predict, alpha=0.4)
+
+plt.xlabel("Actual Debt Rate")
+plt.ylabel("Predict Debt rate")
+plt.title("Debt Status")
+plt.show()
+
+
 # # lr.coef_
 
-# In[60]:
+# In[15]:
 
 
 lr.intercept_
 
 
-# In[61]:
+# In[19]:
 
 
+my_income = [[2,30,5]]
+my_predict = lr.predict(my_income)
+print(my_predict)
 print(lr.score(x_train, y_train))
 print(lr.score(x_test, y_test))
 
 
-# In[62]:
+# In[17]:
 
 
 from sklearn.linear_model import Ridge
