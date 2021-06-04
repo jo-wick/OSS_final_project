@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[8]:
+# In[74]:
 
 
 from sklearn.linear_model import LinearRegression
@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[9]:
+# In[75]:
 
 
 # 채무 gap 평균 증가량을 (21개 기준)으로 평균 값을 낸 뒤
@@ -21,16 +21,17 @@ import matplotlib.pyplot as plt
 # 그런 다음 linear regression을 이용하여 그래프 등을 그린다!
 
 
-# In[10]:
+# In[95]:
 
 
+print('It is a program that predicts monthly income by entering the number of household members, the age of household owners, and the income quintile!')
 df = pd.read_csv("data.csv")
 df.dropna()
 
 df.head()
 
 
-# In[11]:
+# In[77]:
 
 
 from sklearn.model_selection import train_test_split
@@ -45,20 +46,21 @@ y = df[['소득']]
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, test_size=0.3)
 
 
-# In[12]:
+# In[78]:
 
 
 lr = LinearRegression()
 lr.fit(x_train, y_train)
 
 
-# In[13]:
+# In[80]:
 
 
 y_predict = lr.predict(x_test)
 # y_predict1 = y_predict
 # y_predict2 = y_predict
 # print(y_predict)
+# print(y_test)
 # # print(y_predict)
 # print(y_predict.size)
 # range1 = y_predict.size/2
@@ -75,48 +77,55 @@ y_predict = lr.predict(x_test)
 # print(y_rate)
 
 
-# In[14]:
+# In[93]:
 
 
 import matplotlib.pyplot as plt
 
 # plt.scatter(y_year, y_rate, alpha=0.4)
-plt.scatter(y_test, y_predict, alpha=0.4)
+plt.scatter(y_test, y_predict, alpha=0.2,
+            cmap='viridis')
 
-plt.xlabel("Actual Debt Rate")
-plt.ylabel("Predict Debt rate")
-plt.title("Debt Status")
+plt.xlabel("Actual Income")
+plt.ylabel("Predict Income")
+plt.title("Monthly Income")
+# plt.colorbar()
+print('The closer the graph is to a straight line, the more accurate it is.')
 plt.show()
+# plt.show()
 
 
 # # lr.coef_
 
-# In[15]:
+# In[94]:
 
 
-lr.intercept_
-
-
-# In[19]:
-
-
-my_income = [[2,30,5]]
-my_predict = lr.predict(my_income)
-print(my_predict)
+print('Program Accuracy (Closer to 1, More Accurate)')
 print(lr.score(x_train, y_train))
 print(lr.score(x_test, y_test))
 
 
-# In[17]:
+# In[96]:
 
 
-from sklearn.linear_model import Ridge
+input1 = input("Please enter the number of household members: ")
+input1 = int(input1)
 
-#저희가 원래 하던 방식이 아닌 수업 ppt week10 40page Ridge라는 방식으로 해도 크게 성능이 좋아 지지 않습니다
-#더 좋은 데이터를 찾아서 넣으면 성능이 더 좋아질 듯 합니다!
-ridge = Ridge(alpha=0.01, normalize=True).fit(x_train, y_train)
-print(ridge.score(x_train, y_train))
-print(ridge.score(x_test, y_test))
+input2 = input("Please enter the age of the householder: ")
+input2 = int(input2)
+
+input3 = input("Please enter your income quintile: ")
+input3 = int(input3)
+
+result = []
+result.append(input1)
+result.append(input2)
+result.append(input3)
+temp = []
+temp.append(result)
+my_predict = lr.predict(temp)
+my_predict = int(my_predict)
+print(my_predict, '원')
 
 
 # In[ ]:
