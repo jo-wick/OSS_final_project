@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[74]:
+# In[1]:
 
 
 from sklearn.linear_model import LinearRegression
@@ -10,13 +10,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[75]:
+# In[ ]:
 
 
 
 
 
-# In[95]:
+# In[2]:
 
 
 print('It is a program that predicts monthly income by entering the number of household members, the age of household owners, and the income quintile!')
@@ -26,7 +26,7 @@ df.dropna()
 df.head()
 
 
-# In[77]:
+# In[3]:
 
 
 from sklearn.model_selection import train_test_split
@@ -38,20 +38,20 @@ y = df[['소득']]
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, test_size=0.3)
 
 
-# In[78]:
+# In[4]:
 
 
 lr = LinearRegression()
 lr.fit(x_train, y_train)
 
 
-# In[80]:
+# In[5]:
 
 
 y_predict = lr.predict(x_test)
 
 
-# In[93]:
+# In[6]:
 
 
 import matplotlib.pyplot as plt
@@ -71,7 +71,7 @@ plt.show()
 
 # # lr.coef_
 
-# In[94]:
+# In[7]:
 
 
 print('Program Accuracy (Closer to 1, More Accurate)')
@@ -79,7 +79,7 @@ print(lr.score(x_train, y_train))
 print(lr.score(x_test, y_test))
 
 
-# In[96]:
+# In[8]:
 
 
 input1 = input("Please enter the number of household members: ")
@@ -99,7 +99,7 @@ temp = []
 temp.append(result)
 my_predict = lr.predict(temp)
 my_predict = int(my_predict)
-print(my_predict, 'won')
+print('{0}won'.format(my_predict))
 
 
 # In[ ]:
