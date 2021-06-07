@@ -18,5 +18,6 @@ For any questions or comments, please feel free to contact me through -> 2160086
 
 ## Reference
 https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
+https://kostat.go.kr/portal/korea/index.action
 
 ## Video Link
