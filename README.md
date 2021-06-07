@@ -10,8 +10,8 @@ This program predicts monthly income by entering the number of household members
 ## How do I get started?
 + First, install python 3
 + Second, install pandas, numpy, sklearn, metapolib
-+ Third, git clone 
-+ Lastly, '''python oss_final_project.py'''
++ Third, git clone https://github.com/jo-wick/OSS_final_project.git
++ Lastly, $ python oss_final_project.py
 
 ## Where can I get more help?
 For any questions or comments, please feel free to contact me through -> 21600862@handong.edu
