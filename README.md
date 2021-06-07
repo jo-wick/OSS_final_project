@@ -17,7 +17,7 @@ This program predicts monthly income by entering the number of household members
 For any questions or comments, please feel free to contact me through -> 21600862@handong.edu
 
 ## Reference
-https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
-https://kostat.go.kr/portal/korea/index.action
++ https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
++ https://kostat.go.kr/portal/korea/index.action
 
 ## Video Link
